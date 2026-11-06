@@ -1,8 +1,12 @@
 #include <stdio.h>
 #include <stdint.h>
 #include <stdlib.h>
+#include <string.h>
 
-struct CHIP8
+
+
+
+typedef struct CHIP8
 {
    //4kb ram 
    uint8_t memory[4096];
@@ -30,12 +34,23 @@ struct CHIP8
    uint8_t display[64 * 32];
 
    //keypad
-   uint8_t keypad[16]
-};
+   uint8_t keypad[16];
+}CHIP8;
+
+//prototype for init_chip
+void init_chip(CHIP8 *chip);
 
 int main(void)
 {
-    
+    //initialise chip
+    CHIP8 chip8;
+    init_chip(&chip8);
+    //clear memory
+    //fetch,decode,execute loop
+}
+
+void init_chip(CHIP8 *chip)
+{
     //load font
     uint8_t font[] = {0xF0, 0x90, 0x90, 0x90, 0xF0, // 0
                     0x20, 0x60, 0x20, 0x20, 0x70, // 1
@@ -54,7 +69,7 @@ int main(void)
                     0xF0, 0x80, 0xF0, 0x80, 0xF0, // E
                     0xF0, 0x80, 0xF0, 0x80, 0x80  // F
     };
-    //fetch,decode,execute loop
 
-
+    //copy font into memory
+    memcpy(&chip->memory, font, sizeof(font));
 }
