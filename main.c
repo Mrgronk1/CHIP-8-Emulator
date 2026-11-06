@@ -45,6 +45,10 @@ int main(void)
     //initialise chip
     CHIP8 chip8;
     init_chip(&chip8);
+
+    //TODO: make both timers(delay and sound timer) decrement by 1 60 times a second
+    //as long as their value is greater than 1
+    
     //clear memory
     //fetch,decode,execute loop
 }
